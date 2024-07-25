@@ -1,0 +1,17 @@
+<form #form="ngForm" (submit)="onSubmit(form)">
+  <input ngModel type="email" name="email" placeholder="email" required />
+  <input
+    ngModel
+    type="password"
+    name="password"
+    placeholder="password"
+    required
+  />
+
+  @if(form.invalid && form.touched){
+  <p class="error">make sure that all inputs are valid.</p>
+
+  }
+  <button>Submit</button>
+  <button (click)="resetForm()">Reset</button>
+</form>
