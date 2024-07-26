@@ -1,0 +1,14 @@
+.error {
+  color: red;
+}
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.template-driven {
+  background-color: rgb(255, 135, 135);
+  padding: 2vw;
+  box-sizing: border-box;
+}

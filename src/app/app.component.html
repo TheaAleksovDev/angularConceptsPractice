@@ -1,6 +1,12 @@
 <div class="container">
-  <button (click)="setSelectedComponent(1)">component 1</button>
-  <button (click)="setSelectedComponent(2)">component 2</button>
+  <div>
+    <button (click)="setSelectedComponent(1)">component 1</button>
+    <button (click)="setSelectedComponent(2)">component 2</button>
 
-  <app-practice *ngIf="selectedComponent === 1"></app-practice>
+    <app-practice *ngIf="selectedComponent === 1"></app-practice>
+  </div>
+  <div>
+    <app-template-driven-form></app-template-driven-form>
+    <app-reactive-form></app-reactive-form>
+  </div>
 </div>
