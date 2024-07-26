@@ -1,0 +1,23 @@
+<form [formGroup]="form" class="reactive" (submit)="onSubmit()">
+  <p>Reactive Form</p>
+  <input type="email" formControlName="email" placeholder="email" />
+  <div formGroupName="passwords">
+    <input type="password" formControlName="password" placeholder="password" />
+    <input
+      type="password"
+      formControlName="confirmPassword"
+      placeholder="confirm-password"
+    />
+  </div>
+
+  @if(emailIsInvalid()){
+  <p class="error">email invalid</p>
+  } @if( this.form.controls.passwords.controls.password.touched &&
+  this.form.controls.passwords.controls.confirmPassword.touched &&
+  !passwordsEqual()){
+  <p class="error">passwords not equal</p>
+  }
+
+  <button>Submit</button>
+  <button (click)="resetForm()">Reset</button>
+</form>

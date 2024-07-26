@@ -19,7 +19,7 @@ export class TemplateDrivenFormComponent implements OnInit, OnDestroy {
   private form = viewChild.required<NgForm>('form');
   private formSubscription: Subscription | undefined;
   ngOnInit(): void {
-    const savedEmail = localStorage.getItem('email');
+    const savedEmail = localStorage.getItem('template-driven-form-email');
     setTimeout(() => {
       this.form().controls['email'].setValue(savedEmail);
     }, 1);
@@ -28,7 +28,10 @@ export class TemplateDrivenFormComponent implements OnInit, OnDestroy {
     afterNextRender(() => {
       this.formSubscription = this.form().valueChanges?.subscribe({
         next: ({ email }) => {
-          localStorage.setItem('email', email ? email : '');
+          localStorage.setItem(
+            'template-driven-form-email',
+            email ? email : ''
+          );
         },
       });
     });

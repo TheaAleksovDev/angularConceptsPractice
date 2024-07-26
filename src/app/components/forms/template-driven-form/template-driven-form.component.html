@@ -1,4 +1,6 @@
-<form #form="ngForm" (submit)="onSubmit(form)">
+<form #form="ngForm" class="template-driven" (submit)="onSubmit(form)">
+  <p>Template-driven Form</p>
+
   <input ngModel type="email" name="email" placeholder="email" required />
   <input
     ngModel
