@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { PracticeComponent } from './components/practice/practice.component';
 import { CommonModule } from '@angular/common';
 import { TemplateDrivenFormComponent } from './components/forms/template-driven-form/template-driven-form.component';
-import { ReactiveFormComponent } from "./components/forms/reactive-form/reactive-form.component";
+import { ReactiveFormComponent } from './components/forms/reactive-form/reactive-form.component';
+import { FormsContainerComponent } from './components/forms-container/forms-container.component';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,9 @@ import { ReactiveFormComponent } from "./components/forms/reactive-form/reactive
     RouterOutlet,
     PracticeComponent,
     CommonModule,
-    TemplateDrivenFormComponent,
-    ReactiveFormComponent
-],
+    FormsContainerComponent,
+    RouterLink,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
