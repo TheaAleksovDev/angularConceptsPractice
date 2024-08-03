@@ -1,10 +1,14 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, effect, input, OnInit } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  ResolveFn,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { users } from '../users/users';
 
 interface User {
   name: string;
-  id: number;
+  id: string;
   info: string;
 }
 
@@ -15,21 +19,19 @@ interface User {
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
-export class UserComponent implements OnInit {
-  usersList = users;
-  selectedUser = signal<User | null>(null);
-
-  private activatedRoute = inject(ActivatedRoute);
-
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe({
-      next: (param) => {
-        const id = param.get('userId');
-        if (id !== null) {
-          const foundUser: any = this.usersList.find((user) => user.id === id);
-          this.selectedUser.set(foundUser);
-        }
-      },
-    });
-  }
+export class UserComponent {
+  user = input.required<User>();
 }
+
+export const resolveUser: ResolveFn<User | undefined> = (
+  activatedRoute: ActivatedRouteSnapshot,
+  routerState: RouterStateSnapshot
+) => {
+  const usersList = users;
+  let user: User | undefined;
+  const id = activatedRoute.paramMap.get('userId');
+  if (id !== null) {
+    user = usersList.find((user) => user.id === id);
+  }
+  return user;
+};
