@@ -4,10 +4,17 @@
     <button (click)="setSelectedComponent(2)">component 2</button>
 
     <app-practice *ngIf="selectedComponent === 1"></app-practice>
-    <button [routerLink]="'/forms'">go to forms component</button>
-    <button [routerLink]="'/users'">go to users component</button>
+    <button routerLink="/forms">go to forms component</button>
+    <button routerLink="/users">go to users component</button>
   </div>
   <div>
     <router-outlet />
   </div>
+  <p class="separator"></p>
+
+  @defer (on viewport) {
+  <app-timer></app-timer>
+  }@placeholder {
+  <p>fallback paragraph</p>
+  }
 </div>
