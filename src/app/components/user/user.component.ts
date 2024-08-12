@@ -1,10 +1,11 @@
-import { Component, effect, input, OnInit } from '@angular/core';
+import { Component, effect, inject, input, OnInit } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   ResolveFn,
   RouterStateSnapshot,
 } from '@angular/router';
 import { users } from '../users/users';
+import { RandomServiceService } from '../../random-service.service';
 
 interface User {
   name: string;
@@ -19,8 +20,13 @@ interface User {
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
   user = input.required<User>();
+  private randomService = inject(RandomServiceService);
+
+  ngOnInit(): void {
+    this.randomService.sayHi();
+  }
 }
 
 export const resolveUser: ResolveFn<User | undefined> = (

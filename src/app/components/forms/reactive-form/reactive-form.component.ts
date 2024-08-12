@@ -62,6 +62,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   constructor() {
+    
     this.form.valueChanges?.subscribe({
       next: ({ email }) => {
         localStorage.setItem('reactive-form-email', email ? email : '');

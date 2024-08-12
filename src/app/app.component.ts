@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { TemplateDrivenFormComponent } from './components/forms/template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './components/forms/reactive-form/reactive-form.component';
 import { FormsContainerComponent } from './components/forms-container/forms-container.component';
+import { TimerComponent } from './components/timer/timer.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { FormsContainerComponent } from './components/forms-container/forms-cont
     CommonModule,
     FormsContainerComponent,
     RouterLink,
+    TimerComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
